@@ -28,7 +28,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
   if (!result.success) {
     return Response.json(
       {
-        error: "Too many requests!!",
+        error: "Too many requests!",
       },
       {
         status: 429,
@@ -39,10 +39,10 @@ export async function POST(request: NextRequest, response: NextResponse) {
   const { email, firstname } = await request.json();
 
   const { data, error } = await resend.emails.send({
-    from: "Lakshay<hello@waitlist.lakshb.dev>",
+    from: "Learn Safe AI <tu@learnsafe.ai>",
     to: [email],
-    subject: "Thankyou for wailisting the Next.js + Notion CMS template!",
-    reply_to: "lakshb.work@gmail.com",
+    subject: "Learn Safe AI - Waitlist confirmed",
+    reply_to: "tu@learnsafe.ai",
     html: render(WelcomeTemplate({ userFirstname: firstname })),
   });
 
