@@ -41,12 +41,12 @@ export const NotionWaitlistEmail = ({ userFirstname }: EmailProps) => (
           </a>
           — I'm here to listen!
         </Text>
-        <Text style={paragraph}>
+        {/* <Text style={paragraph}>
           You can also follow us on X/Twitter for updates:{" "}
           <a href="https://x.com/learnsafeai" style={link}>
             @learnsafeai
           </a>
-        </Text>
+        </Text> */}
         <Text style={signOff}>
           Best regards,
           <br />
@@ -69,7 +69,7 @@ NotionWaitlistEmail.PreviewProps = {
 export default NotionWaitlistEmail;
 
 const main = {
-  background: "linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%)",
+  background: "linear-gradient(-225deg, #ffab40 0%, #0d5bd9 100%)",
   fontFamily: 'figtree, "Helvetica Neue", Helvetica, Arial, sans-serif',
   padding: "40px 0",
   color: "#cccccc",
