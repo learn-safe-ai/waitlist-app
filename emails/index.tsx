@@ -21,7 +21,7 @@ export const NotionWaitlistEmail = ({ userFirstname }: EmailProps) => (
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`https://app-peach-kappa-91.vercel.app/waitlist-email-logo.png`}
+          src={`https://learnsafe.ai/learn-safe-ai-email.png`}
           width="216"
           height="65"
           alt="LearnSafeAI Logo"
@@ -29,8 +29,7 @@ export const NotionWaitlistEmail = ({ userFirstname }: EmailProps) => (
         />
         <Text style={greeting}>Hi {userFirstname},</Text>
         <Text style={paragraph}>
-          Thanks for joining the waitlist for LearnSafeAI. I'm glad to
-          have you on board.
+          Thanks for joining the waitlist for LearnSafeAI. We're glad to have you on board.
         </Text>
         <Text style={paragraph}>
           We will keep you posted on the progress and notify you as soon as you can start learning safe AI best practices. 
@@ -72,7 +71,7 @@ const main = {
   background: "linear-gradient(-225deg, #ffab40 0%, #0d5bd9 100%)",
   fontFamily: 'figtree, "Helvetica Neue", Helvetica, Arial, sans-serif',
   padding: "40px 0",
-  color: "#cccccc",
+  color: "#1c1c1c",
 };
 
 const container = {
