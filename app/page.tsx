@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import CTA from "@/components/cta";
 import Form from "@/components/form";
-import Logos from "@/components/logos";
+import Benefits from "@/components/benefits";
 import Particles from "@/components/ui/particles";
 
 export default function Home() {
@@ -121,6 +121,8 @@ export default function Home() {
           handleSubmit={handleSubmit}
           loading={loading}
         />
+
+        <Benefits/>
 
         {/* <Logos /> */}
       </section>

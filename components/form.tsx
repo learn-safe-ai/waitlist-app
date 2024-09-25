@@ -3,8 +3,8 @@ import { ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { EnhancedButton } from "@/components/ui/enhanced-btn";
+// import { EnhancedButton } from "@/components/ui/enhanced-btn";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { containerVariants, itemVariants } from "@/lib/animation-variants";
 
 interface FormProps {
@@ -47,7 +47,7 @@ export default function Form({
         />
       </motion.div>
       <motion.div variants={itemVariants}>
-        <EnhancedButton
+        {/* <EnhancedButton
           variant="expandIcon"
           Icon={FaArrowRightLong}
           onClick={handleSubmit}
@@ -55,7 +55,14 @@ export default function Form({
           className="mt-2 w-full"
           disabled={loading}>
           {loading ? "Loading..." : "Start Your AI Journey!"}
-        </EnhancedButton>
+        </EnhancedButton> */}
+
+        <RainbowButton
+          onClick={handleSubmit}
+          disabled={loading}>
+          {loading ? "Loading..." : "Start Your AI Journey!"}
+        </RainbowButton>
+
       </motion.div>
       {/* <motion.div
         variants={itemVariants}
