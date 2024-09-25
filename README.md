@@ -1,4 +1,4 @@
-<h1 align="center">Next.js + Notion — Wailtist Template</h1>
+<h1 align="center">LearnSafe AI Waitlist</h1>
 
 <p align="center">
 

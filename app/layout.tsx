@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import { CSPostHogProvider } from "./providers";
 
 const FigtreeFont = Figtree({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
       <meta property="og:image:height" content="832" />
       <meta
         property="og:site_name"
-        content="Next.js + Notion — Waitlist Template"
+        content="Learn Safe AI"
       />
       <meta
         property="og:url"
@@ -35,11 +36,13 @@ export default function RootLayout({
       <meta name="twitter:image:type" content="image/png" />
       <meta name="twitter:image:width" content="1280" />
       <meta name="twitter:image:height" content="832" />
-      <body className={FigtreeFont.className}>
-        {children}
-        <Toaster richColors position="top-center" />
-        <Analytics />
-      </body>
+      <CSPostHogProvider>
+        <body className={FigtreeFont.className}>
+          {children}
+          <Toaster richColors position="top-center" />
+          <Analytics />
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
