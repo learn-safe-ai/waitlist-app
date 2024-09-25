@@ -6,8 +6,6 @@ import CTA from "@/components/cta";
 import Form from "@/components/form";
 import Logos from "@/components/logos";
 import Particles from "@/components/ui/particles";
-// import Header from "@/components/header";
-// import Footer from "@/components/footer";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
@@ -56,7 +54,7 @@ export default function Home() {
           if (mailResponse.status === 429) {
             reject("Rate limited");
           } else {
-            reject("Email sending failed");
+            reject("Waitlist confirmed, but unable to send email.");
           }
           return; // Exit the promise early if mail sending fails
         }
@@ -74,7 +72,7 @@ export default function Home() {
           if (notionResponse.status === 429) {
             reject("Rate limited");
           } else {
-            reject("Notion insertion failed");
+            reject("Unable to waitlist.");
           }
         } else {
           resolve({ name });
@@ -85,21 +83,21 @@ export default function Home() {
     });
 
     toast.promise(promise, {
-      loading: "Getting you on the waitlist... 🚀",
+      loading: "Getting you on the waitlist...",
       success: (data) => {
         setName("");
         setEmail("");
-        return "Thank you for joining the waitlist 🎉";
+        return "Thank you for joining the waitlist!";
       },
       error: (error) => {
         if (error === "Rate limited") {
-          return "You're doing that too much. Please try again later";
+          return "You submitted too many times. Please try again later.";
         } else if (error === "Email sending failed") {
-          return "Failed to send email. Please try again 😢.";
+          return "Failed to send email. Please try again.";
         } else if (error === "Notion insertion failed") {
-          return "Failed to save your details. Please try again 😢.";
+          return "Failed to save your details. Please try again.";
         }
-        return "An error occurred. Please try again 😢.";
+        return "An error occurred. Please try again.";
       },
     });
 
@@ -124,16 +122,13 @@ export default function Home() {
           loading={loading}
         />
 
-        <Logos />
+        {/* <Logos /> */}
       </section>
-
-      {/* <Footer /> */}
-
       <Particles
         quantityDesktop={350}
         quantityMobile={100}
         ease={80}
-        color={"#F7FF9B"}
+        color={"#ffab40"}
         refresh
       />
     </main>
