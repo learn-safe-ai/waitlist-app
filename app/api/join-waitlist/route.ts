@@ -1,12 +1,53 @@
-import { Client } from "@notionhq/client";
+import { render } from "@react-email/render";
+import WelcomeTemplate from "../../../emails";
+import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { Redis } from "@upstash/redis";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Client } from "@notionhq/client";
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 const notion = new Client({ auth: process.env.NOTION_SECRET });
 
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
+
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(2, "1 m"),
+});
+
 export async function POST(request: NextRequest) {
+  const ip = request.ip ?? "127.0.0.1";
+  const result = await ratelimit.limit(ip);
+
+  if (!result.success) {
+    return NextResponse.json(
+      { error: "Too many requests!" },
+      { status: 429 }
+    );
+  }
+
   const body = await request.json();
-  
+  const { email, name, industry, familiarityWithGenAI, intendedUseOfGenAI, concernLevelAboutAIRisk } = body;
+
   try {
+    // Send email
+    const { data: emailData, error: emailError } = await resend.emails.send({
+      from: "Learn Safe AI <tu@learnsafe.ai>",
+      to: [email],
+      subject: "Learn Safe AI - Waitlist confirmed",
+      reply_to: "tu@learnsafe.ai",
+      html: render(WelcomeTemplate({ userFirstname: name.split(' ')[0] })),
+    });
+
+    if (emailError) {
+      return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    }
+
+    // If email sent successfully, update Notion
     // Process industry
     let industry = body.industry;
     if (industry === "Other" && body.industryOther) {
@@ -14,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Process intended use of GenAI
-    let intendedUse = body.intendedUseOfGenAI.map((use: string) => 
+    let intendedUse = body.intendedUseOfGenAI.map((use: string) =>
       use === "Other" ? body.intendedUseOther : use
     ).filter(Boolean).join("; ");
 
