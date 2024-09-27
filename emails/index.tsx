@@ -22,7 +22,6 @@ export const NotionWaitlistEmail = ({ userFirstname }: EmailProps) => (
       <Container style={container}>
         <Img
           src={`https://learnsafe.ai/learn-safe-ai-email.png`}
-          width="216"
           height="65"
           alt="LearnSafeAI Logo"
           style={logo}
