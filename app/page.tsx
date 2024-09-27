@@ -21,7 +21,7 @@ export default function Home() {
         {!submitted ? (
           <Form onSuccess={handleSuccess} />
         ) : (
-          <p>Thank you for joining the waitlist!</p>
+          <p className="mt-4">Thank you for joining the waitlist!</p>
         )}
 
         <Benefits/>
