@@ -151,7 +151,7 @@ export default function Form({ onSuccess }: FormProps) {
           >
             {industryOptions.map((option) => (
               <div className="flex items-center space-x-2" key={option}>
-                <RadioGroupItem value={option} id={`industry-${option}`} />
+                <RadioGroupItem value={option} id={`industry-${option}`} className="border-input text-brand" />
                 <Label htmlFor={`industry-${option}`}>{option}</Label>
               </div>
             ))}
@@ -179,6 +179,7 @@ export default function Form({ onSuccess }: FormProps) {
                 id={`use-${option}`}
                 checked={formData.intendedUseOfGenAI.includes(option)}
                 onCheckedChange={(checked) => handleCheckboxChange(option, checked as boolean)}
+                className="border-input data-[state=checked]:border-brand data-[state=checked]:bg-brand"
               />
               <Label htmlFor={`use-${option}`}>{option}</Label>
             </div>
@@ -237,7 +238,7 @@ export default function Form({ onSuccess }: FormProps) {
           >
             {familiarityOptions.map((option) => (
               <div className="flex items-center space-x-2" key={option}>
-                <RadioGroupItem value={option} id={`familiarity-${option}`} />
+                <RadioGroupItem value={option} id={`familiarity-${option}`} className="border-input text-brand"/>
                 <Label htmlFor={`familiarity-${option}`}>{option}</Label>
               </div>
             ))}
