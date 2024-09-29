@@ -28,12 +28,13 @@ export const NotionWaitlistEmail = ({ userFirstname }: EmailProps) => (
         />
         <Text style={greeting}>Hi {userFirstname},</Text>
         <Text style={paragraph}>
-          Thanks for joining the waitlist for LearnSafeAI. We're glad to have you on board.
+          Thanks for joining the waitlist for LearnSafeAI. We're glad to have you on board. We will keep you posted on the progress and notify you as soon as you can start learning safe AI best practices.
         </Text>
         <Text style={paragraph}>
-          We will keep you posted on the progress and notify you as soon as you can start learning safe AI best practices. 
-          In the meantime, if you have any questions or
-          feedback, don't hesitate to reach out by replying directly to{" "}
+          In the meantime, we will keep you posted on industry updates and advancements in AI.
+        </Text>
+        <Text style={paragraph}>
+          If you have any questions or feedback, don't hesitate to reach out by replying directly to{" "}
           <a href="mailto:tu@learnsafe.ai" style={link}>
             this email {""}
           </a>
