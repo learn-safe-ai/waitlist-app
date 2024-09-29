@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
     // Send email
     const { data: emailData, error: emailError } = await resend.emails.send({
       from: "Learn Safe AI <tu@learnsafe.ai>",
+      bcc: ["hello@learnsafe.ai"],
       to: [email],
       subject: "Learn Safe AI - Waitlist confirmed",
       reply_to: "tu@learnsafe.ai",

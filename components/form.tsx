@@ -253,7 +253,7 @@ export default function Form({ onSuccess }: FormProps) {
       case 0:
         return (
           <motion.div variants={itemVariants} className="w-full max-w-96 mx-auto">
-            <Button onClick={handleNext} className="w-full px-8">Join Waitlist</Button>
+            <Button onClick={handleNext} className="w-full px-8">Join waitlist to learn safe AI skills</Button>
           </motion.div>
         );
       case 1:
@@ -302,6 +302,9 @@ export default function Form({ onSuccess }: FormProps) {
         return (
           <>
             {renderQuestions()}
+            <motion.div variants={itemVariants} className="flex justify-between items-center mt-4 text-sm">
+              By submitting your information, you agree to receive emails from LearnSafeAI.
+            </motion.div>
             <motion.div variants={itemVariants} className="flex justify-between items-center mt-4">
               <Button variant="ghost" onClick={handleBack} className="text-sm">
                 Back

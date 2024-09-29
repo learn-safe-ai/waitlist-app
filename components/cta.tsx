@@ -27,7 +27,7 @@ export default function CTA() {
       <motion.div variants={itemVariants}>
         <TextBlur
           className="mx-auto max-w-[36rem] pt-1.5 text-center text-base sm:text-lg"
-          text="Empower your career with practical AI skills for the modern workplace"
+          text="Learn practical AI skills for the modern workplace"
           duration={0.8}
         />
       </motion.div>

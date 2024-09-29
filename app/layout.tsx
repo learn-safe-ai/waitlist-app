@@ -4,6 +4,7 @@ import { Figtree } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "./providers";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const FigtreeFont = Figtree({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           {children}
           <Toaster richColors position="top-center" />
           <Analytics />
+          <GoogleAnalytics gaId="G-E2FSXSY97Z" />
         </body>
       </CSPostHogProvider>
     </html>
