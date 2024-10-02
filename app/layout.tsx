@@ -60,9 +60,14 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
             fbq('track', 'PageView');
             `}
           </Script>
-          <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1112173830487266&ev=PageView&noscript=1"
-          /></noscript>
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=1112173830487266&ev=PageView&noscript=1`}
+            />
+          </noscript>
 
         </body>
       </CSPostHogProvider>
